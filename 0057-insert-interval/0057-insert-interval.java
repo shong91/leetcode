@@ -26,12 +26,25 @@ class Solution {
   }
 
   public int[][] insert(int[][] intervals, int[] newInterval) {
-    int[][] newArr = new int[intervals.length + 1][];
-    for (int i = 0; i < intervals.length; i++) {
-      newArr[i] = intervals[i];
+    boolean isIntervalInserted = false;
+    List<int[]> list = new ArrayList<>(Arrays.asList(intervals));
 
+    for (int i = 0; i < intervals.length; i++) {
+        if (newInterval[0] < intervals[i][0]) {
+            // Found the position, insert the interval and break from the loop.
+            list.add(i, newInterval);
+            isIntervalInserted = true;
+            break;
+        }
     }
-    newArr[intervals.length] = newInterval;
-    return merge(newArr);
+
+    // If there is no interval with a greater value of start value,
+    // then the interval must be inserted at the end of the list.
+    if (!isIntervalInserted) {
+        list.add(newInterval);
+    }
+
+    int[][] newIntervals =list.toArray(new int[list.size()][2]);
+    return merge(newIntervals);
   }
 }
