@@ -37,6 +37,7 @@ class WordDictionary {
       char c = word.charAt(i);
       if (c == '.') {
         for (WordDictionary ch : curr.children) {
+            // not ++i but i+i: NOT to affect for loop 
           if (ch != null && ch.search(word.substring(i+1))) {
             return true;
           }
