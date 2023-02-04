@@ -1,0 +1,30 @@
+class Solution {
+    
+    public boolean isOverlap(int[] a, int[] b) {
+    return a[0] <= b[1] && b[0] <= a[1];
+
+  }
+
+  public int mergeInterval(int[] a, int[] b) {
+    return Math.max(a[1], b[1]);
+  }
+
+  public int[][] merge(int[][] intervals) {
+      // 배열을 오름차순 정렬한 뒤 시작
+    Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+    LinkedList<int[]> merged = new LinkedList<>();
+    for (int[] interval : intervals) {
+      if (merged.isEmpty() || !isOverlap(merged.getLast(), interval)) {
+        merged.add(interval);
+      } else {
+        merged.getLast()[1] = mergeInterval(merged.getLast(), interval);
+      }
+    }
+
+    return merged.toArray(new int[merged.size()][]);
+  }
+  /**
+   * time : O(nlogn)
+   * space: O(n)
+   */
+}
