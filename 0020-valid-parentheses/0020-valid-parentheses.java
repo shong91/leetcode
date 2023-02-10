@@ -6,23 +6,16 @@ class Solution {
         map.put('(', ')');
         map.put('{', '}');
         map.put('[', ']');
-  
-          for (int i = 0; i < s.length(); i++) {
+
+        for (int i = 0; i < s.length(); i++) {
           char ch = s.charAt(i);
           if (map.containsKey(ch)) {
             stack.push(ch);
-          } else {
-            if (!stack.isEmpty()) {
-              char key = stack.pop();
-              if (ch != map.get(key)) {
-                return false;
-              }
-            } else {
-              return false;
-            }
+          } else if (stack.isEmpty() || ch != map.get(stack.pop())) {
+            return false;
           }
         }
-
+        
         return stack.isEmpty();
     }
 }
