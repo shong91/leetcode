@@ -10,33 +10,23 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        // compare and add on priorityqueue
-        PriorityQueue<ListNode> pq = new PriorityQueue<ListNode>(new Comparator<ListNode>() {
-            @Override
-            public int compare(ListNode o1, ListNode o2) {
-                return o1.val - o2.val; 
-            }
-        });
-        
-        if(list1 != null) {
-            pq.offer(list1);
-        }
-        if(list2 != null) {
-            pq.offer(list2);
-        }
-        
         ListNode mergeSort = new ListNode(-1); 
         ListNode currentNode = mergeSort; 
         
-        while(!pq.isEmpty()) {
-            ListNode node = pq.poll(); 
-            if(node.next != null) {
-                pq.offer(node.next); 
+        while (list1 != null && list2 != null) {
+            if (list1.val >= list2.val) {
+                currentNode.next = list2; 
+                list2 = list2.next; 
+            } else {
+                currentNode.next = list1; 
+                list1 = list1.next; 
             }
             
-            currentNode.next = node; 
             currentNode = currentNode.next; 
         }
+        
+        // last currentNode.next
+        currentNode.next = (list1 == null) ? list2 : list1; 
         
         return mergeSort.next; 
     }
