@@ -1,19 +1,12 @@
 class Solution {
     public boolean isPalindrome(String s) {
-          // remove non-printable ASCII characters
-    s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
-   
-    // use two pointers
-    int start = 0;
-    int end = s.length() - 1;
-    while (start < end) {
-      if (s.charAt(start) != s.charAt(end)) {
-        return false;
-      }
-      // move pointers 
-      start++;
-      end--;
-    }
-    return true;
+        String regExp = "[^a-zA-Z0-9]";
+        s = s.replaceAll(regExp, "").toLowerCase();
+        for (int i = 0; i < s.length() / 2; i++) {
+          if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
+            return false;
+          }
+        }
+        return true;
     }
 }
