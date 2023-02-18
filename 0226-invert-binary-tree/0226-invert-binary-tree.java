@@ -20,13 +20,14 @@ class Solution {
       return null;
     }
 
-    // recursive left/right sub-tree
-    TreeNode left = invertTree(root.left);
-    TreeNode right = invertTree(root.right);
-
     // swap the pointers
-    root.left = right;
-    root.right = left;
+    TreeNode temp = root.left;
+    root.left = root.right;
+    root.right = temp;
+
+    // recursive left/right sub-tree
+    invertTree(root.left);
+    invertTree(root.right);
 
     return root;
 
