@@ -1,30 +1,25 @@
 class MyQueue {
-    Stack stack = new Stack();
+    private Stack<Integer> stack = new Stack<>();
+    
     public MyQueue() {
         
     }
     
-   
-  public void push(int x) {
-    stack.push(x);
+    public void push(int x) {
+        stack.push(x); 
+    }
+    
+    public int pop() {
+        return stack.remove(0);
+    }
 
-  }
-
-  public int pop() {
-    return (int) stack.remove(0);
-
-
-  }
-
-  public int peek() {
-    return (int) stack.firstElement();
-
-  }
-
-  public boolean empty() {
-    return stack.empty();
-
-  }
+    public int peek() {
+        return stack.firstElement();
+     }
+    
+    public boolean empty() {
+        return stack.isEmpty();
+    }
 }
 
 /**
