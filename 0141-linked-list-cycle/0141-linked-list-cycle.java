@@ -18,14 +18,11 @@ public class Solution {
             slowPointer = slowPointer.next;
             fastPointer = fastPointer.next.next;
             
+            // if linked list has a cycle in it, slowPointer and fastPointer will meet
             if (slowPointer == fastPointer) {
                 return true; 
             }
-            
-            
         }
-       
-        
         return false; 
         
     }
