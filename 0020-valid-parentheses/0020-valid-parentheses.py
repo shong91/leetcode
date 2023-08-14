@@ -2,7 +2,6 @@ class Solution:
     def isValid(self, s: str) -> bool:
         parentheses = dict(("()", "[]", "{}"))
         stack = []
-        print(parentheses)
         for element in s:
             if element in "([{":
                 # If open parentheses are present, append it to stack
