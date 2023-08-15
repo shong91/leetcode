@@ -9,8 +9,5 @@ class Solution:
         if not root:
             return 0
         
-        left_depth = self.maxDepth(root.left)
-        right_depth = self.maxDepth(root.right)
-        
         # add 1 for root node
-        return max(left_depth, right_depth) + 1
+        return max(self.maxDepth(root.left),self.maxDepth(root.right)) + 1
