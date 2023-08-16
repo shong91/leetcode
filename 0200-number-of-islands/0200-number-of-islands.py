@@ -10,11 +10,12 @@ class Solution:
                     or next_row >= m
                     or next_col < 0
                     or next_col >= n
-                    or grid[next_row][next_col] == "0"
+                    or grid[next_row][next_col] == "0" # 이미 방문했거나, water 이면 접근 불가
                 ):
                     continue
 
-                grid[next_row][next_col] = "0"
+                # visited 처리
+                grid[next_row][next_col] = "0" 
                 dfs(next_row, next_col)
 
         n = len(grid[0])  # col
