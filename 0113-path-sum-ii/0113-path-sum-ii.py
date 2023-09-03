@@ -19,7 +19,8 @@ class Solution:
                 answer.append(result)
 
             targetSum -= root.val
-            # result.append(root.val)
+            # result.append(root.val) 는 result 의 값을 갱신함 => root-to-leaf 가 아닌 노드의 값도 계속 더해지기 때문에
+            # result + [root.val] 으로 새로운 array를 인자로 넘겨줌
             hasPathSum(root.left, targetSum, result + [root.val])
             hasPathSum(root.right, targetSum, result + [root.val])
         
