@@ -13,11 +13,11 @@ class Solution:
 
             if not root.left and not root.right:
                 result.append(str(root.val))
-                answers.append(''.join(result))
+                answers.append(int(''.join(result)))
 
             pathSum(root.left, result + [str(root.val)])
             pathSum(root.right, result + [str(root.val)])
 
         pathSum(root, [])
      
-        return sum([int(i) for i in answers])
+        return sum(answers)
