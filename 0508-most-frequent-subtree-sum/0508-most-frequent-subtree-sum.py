@@ -12,6 +12,7 @@ class Solution:
             if not root:
                 return 0
             sum = root.val + subTree(root.left) + subTree(root.right)
+            # 딕셔너리 형태로 저장 -> {key: value} value 가 가장 큰 값이 frequentSum
             res[sum] += 1
             return sum
         
