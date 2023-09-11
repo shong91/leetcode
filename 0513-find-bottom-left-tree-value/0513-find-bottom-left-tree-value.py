@@ -19,4 +19,5 @@ class Solution:
         find(root, 0)
         
         left = max(res.keys())
+        # 0 부터 순서대로 res에 append => BottomLeftValue 는 리스트의 가장 마지막 원소
         return res[len(res)-1][0]
