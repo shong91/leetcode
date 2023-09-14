@@ -1,8 +1,6 @@
 class Solution:
     def restoreString(self, s: str, indices: List[int]) -> str:
-        slist = list(s)
+        res = [''] * len(s)
         for i in range(len(s)):
-            slist[indices[i]] = s[i]
-            
-            
-        return ''.join(slist)
+            res[indices[i]] = s[i]
+        return ''.join(i for i in res)
